@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../src/db.php';
+require_once __DIR__ . '/src/db.php';
 
 $page = isset($_GET['page']) ? max((int) $_GET['page'], 1) : 1;
 $limit = 8;

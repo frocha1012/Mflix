@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../src/db.php';
+require_once __DIR__ . '/src/db.php';
 use MongoDB\BSON\ObjectId;
 
 if (!isset($_GET['id']) || !preg_match('/^[a-f\d]{24}$/i', $_GET['id'])) {
