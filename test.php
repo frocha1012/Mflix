@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../src/db.php'; // Inclui a conexão MongoDB com dotenv
+require_once __DIR__ . '/src/db.php'; // Inclui a conexão MongoDB com dotenv
 
 try {
     // Testa listagem de bases de dados
