@@ -1,22 +1,19 @@
 <?php
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use Dotenv\Dotenv;
 use MongoDB\Client;
 
-// Carregar variáveis do ficheiro .env
-$dotenv = Dotenv::createImmutable(__DIR__ . '/../');
-$dotenv->load();
-
-// Obter a URI do MongoDB do .env
-$mongoUri = $_ENV['MONGODB_URI'] ?? null;
-
-if (!$mongoUri) {
-    throw new Exception("❌ MONGODB_URI não definida no ficheiro .env");
+if (file_exists(__DIR__ . '/../.env')) {
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+    $dotenv->load();
 }
 
-// Criar cliente MongoDB
-$client = new Client($mongoUri);
+$mongoUri = $_ENV['MONGODB_URI'] ?? getenv('MONGODB_URI') ?? null;
 
-// (Opcional) acesso direto à coleção de filmes da base sample_mflix
+if (!$mongoUri) {
+    throw new Exception("❌ MONGODB_URI não definida no ambiente");
+}
+
+$client = new Client($mongoUri);
 $collection = $client->sample_mflix->movies;
+
