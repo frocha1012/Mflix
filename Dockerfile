@@ -4,7 +4,7 @@ FROM php:8.2-apache
 RUN apt-get update && apt-get install -y \
     git unzip zip libssl-dev pkg-config libicu-dev ca-certificates \
     && docker-php-ext-install intl \
-    && pecl install mongodb \
+    && pecl install mongodb-1.15.0 \
     && docker-php-ext-enable mongodb \
     && a2enmod rewrite
 
